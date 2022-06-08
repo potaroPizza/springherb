@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ez.herb.zipcode.model.ZipcodeDAO">
+
+	<select id="selectAll" parameterType="searchVo" resultType="zipcodeVo">
+		select *
+		from
+		(
+		    select rownum as RNUM, A.*
+		    from
+		    (
+		        select * from zipcode
+		        <include refid="searchWhere"></include>
+		        order by zipcode desc
+		    )A
+		)
+		<!-- where RNUM>0 <![CDATA[ and RNUM<= 5 ]]> -->
+		where RNUM>#{firstRecordIndex} 
+		<![CDATA[
+		and RNUM<=#{firstRecordIndex} + #{recordCountPerPage} ]]>
+	</select>
+	
+	<sql id="searchWhere">
+		<if test="searchKeyword !=null and searchKeyword !=''">
+        	where dong 
+        		like '%' || #{searchKeyword} || '%'
+        </if>
+	</sql>
+	
+	<select id="getTotalRecord" parameterType="searchVo" resultType="int">	
+		select count(*) from zipcode
+		<include refid="searchWhere"></include>
+	</select>
+
+</mapper>
