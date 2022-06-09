@@ -205,11 +205,15 @@ public class MemberController {
 			logger.info("회원정보 삭제 결과, cnt={}", cnt);
 		
 			if(cnt>0) {
-				session.invalidate();	// 세션 소멸
+				session.invalidate();	// session 정보 제거
 				
 				// 쿠키 삭제
 				Cookie ck = new Cookie("ckUserid", userid);
-		        ck.setPath("/");
+		        ck.setPath("/");	
+		        //=> 만약에 setPath로 루트경로를 설정안해주면
+		        //=> 쿠키를 만들어준 곳이나, 그 하위 디렉토리에서만 쿠키를 다룰수 있는데,
+		        //=> 쿠키의 경로를 루트경로로 설정해주면, 어디에서건 쿠키를 다룰 수 있다.
+		        //=> 따라서 쿠키의 경로를 꼭 설정해줘야, 다른곳에서도 쿠키를 사용할 수 있다.
 		        ck.setMaxAge(0);	// 쿠키 유효기간 : 0일 => 쿠키 제거
 	        	response.addCookie(ck);
 				
