@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style type="text/css">
    .divNotice{
@@ -17,32 +20,33 @@
 </style>
 <div class="divNotice">
    <div>
-      <img src="<%=request.getContextPath() %>/images/notice2.JPG" alt="공지사항">      
+   		<%-- url태그나 ${pageContext.request.contextPath}나 아무거나 써도됨 --%>
+      <img src="${pageContext.request.contextPath}/images/notice2.JPG" alt="공지사항">      
       <span>
-      <a href="<%=request.getContextPath()%>/board/list.jsp">
-          <img src="<%=request.getContextPath() %>/images/more.JPG" 
+      <a href="<c:url value='/board/list.do'/>">
+          <img src="<c:url value='/images/more.JPG'/>" 
                border="0" alt="more - 더보기">
       </a>
       </span>
    </div>
    <div>
-      <img src ="<%=request.getContextPath() %>/images/Line.JPG" alt="" class="img1">
+      <img src="<c:url value='/images/Line.JPG'/>" alt="" class="img1">
    </div>
    <div>   <!-- 공지사항 -->
       <table summary="최근 공지사항 6건을 보여주는 표입니다.">
          <tbody>
          <!-- 반복시작 -->
-          <%for(BoardVO vo : list){ %>
+          <c:forEach var="vo" items="${noticeList}">
             <tr>
                <td>
-                  <img src="<%=request.getContextPath() %>/images/dot.JPG">
+                  <img src="<c:url value='/images/dot.JPG'/>">
                   <a href
-            ="<%=request.getContextPath()%>/board/detail.jsp?no=<%=vo.getNo()%>">
-                     <%=vo.getTitle() %>
+            ="<c:url value='/board/detail.do?no=${vo.no}'/>">
+                     ${vo.title}
                   </a>
                </td>
             </tr>             
-          <%} %>
+          </c:forEach>
           <!-- 반복 끝 -->
          </tbody>
       </table>   

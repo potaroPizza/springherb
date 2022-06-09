@@ -17,4 +17,11 @@ public class IndexController {
 		
 		return "/index";
 	}
+	
+	@RequestMapping("/kakaoLogin")
+	public String logout() {
+		logger.info("카카오 로그인 페이지");
+		
+		return "/kakaoLogin";
+	}
 }

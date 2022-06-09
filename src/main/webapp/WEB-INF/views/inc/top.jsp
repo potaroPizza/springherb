@@ -83,10 +83,11 @@
 				<dl id="leftNavi">
 					<!-- category list -->
 					<dt>허브</dt>
-					<dd><a href="default.jsp">허브차</a></dd>
+					<!-- <dd><a href="default.jsp">허브차</a></dd>
 					<dd><a href="default.jsp">아로마 오일</a></dd>
 					<dd><a href="default.jsp">향초</a></dd>
-					<dd><a href="default.jsp">허브비누</a></dd>
+					<dd><a href="default.jsp">허브비누</a></dd> -->
+					<c:import url="/inc/categoryList"/>
 				</dl>
 			</nav>
 			<section id="contents">
