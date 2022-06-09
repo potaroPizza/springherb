@@ -14,4 +14,5 @@ public interface BoardService {
 	public boolean checkPwd(int no, String pwd);
 	public int updateBoard(BoardVO vo);
 	public int deleteBoard(int no);
+	List<BoardVO> selectMainNotice();
 }

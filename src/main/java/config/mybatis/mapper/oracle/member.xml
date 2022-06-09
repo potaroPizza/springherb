@@ -38,9 +38,10 @@
 		where userid = #{userid}
 	</update>
 	
-	<delete id="deleteMember" parameterType="String">
-		delete from member2
+	<update id="deleteMember" parameterType="String">
+		update member2
+		set outdate = sysdate
 		where userid = #{userid}
-	</delete>
+	</update>
 
 </mapper>

@@ -28,7 +28,8 @@ public class MemberServiceImpl implements MemberService {
 		
 		return result;
 	}
-
+	
+	@Override
 	public int checkLogin(String userid, String pwd) {
 		String dbPwd = memberDao.selectPwd(userid);
 		

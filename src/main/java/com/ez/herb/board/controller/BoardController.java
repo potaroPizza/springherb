@@ -208,7 +208,17 @@ public class BoardController {
 		return "/common/message";
 	}
 	
-	
+	@RequestMapping("/mainNotice")
+	public String mainNotice(Model model) {
+		logger.info("메인 공지사항 페이지");
+		
+		List<BoardVO> list = boardService.selectMainNotice();
+		logger.info("공지사항 상위6개 조회 결과, list.size={}", list.size());
+		
+		model.addAttribute("noticeList", list);
+		
+		return "/inc/mainNotice";
+	}
 	
 	
 	
