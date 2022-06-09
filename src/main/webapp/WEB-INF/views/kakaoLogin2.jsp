@@ -14,16 +14,16 @@
 </head>
 <body>
 
-    <a href="javascript:kakaoLogin();">
-    	<img src="<c:url value='/images/kakao_login_medium_narrow.png'/>" alt="카카오계정 로그인" style="height: 100px;"/>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=a490ffff9dff2d6b129601d5fa0b211d&redirect_uri=http://localhost:9091/auth/kakao/callback&response_type=code">
+    	<img src="<c:url value='/images/kakao_login_medium_narrow.png'/>" alt="카카오계정 로그인" style="height: 50px;"/>
     </a>
 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        window.Kakao.init('8dcda3f46be3a86b7823ce582dc201aa');	// 인증요청
+        window.Kakao.init('8dcda3f46be3a86b7823ce582dc201aa');
 
         function kakaoLogin() {
-            window.Kakao.Auth.login({	// 토큰 요청
+            window.Kakao.Auth.login({
                 scope: 'profile_nickname, account_email', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
                 success: function(response) {
                     console.log(response) // 로그인 성공하면 받아오는 데이터
@@ -32,14 +32,9 @@
                         success: (res) => {
                             const kakao_account = res.kakao_account;
                             console.log(kakao_account);
-                            
-                            var email = kakao_account.email;
-                            var name = res.properties.nickname;
-                            
-                            window.location.href='/herb/kakao?email=email&name=name' //리다이렉트 되는 코드
                         }
                     });
-                    //window.location.href='/herb/kakao' //리다이렉트 되는 코드
+                    //window.location.href='/herb' //리다이렉트 되는 코드
                 },
                 fail: function(error) {
                     console.log(error);
