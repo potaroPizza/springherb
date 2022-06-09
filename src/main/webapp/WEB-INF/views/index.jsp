@@ -10,10 +10,12 @@
 </div>
 <div id="rightCon">
 	<!-- 공지사항 -->
+	<!-- include 액션태그 : 소스코드의 실행결과를 포함한다. -->
 	<c:import url="/board/mainNotice"/>
 </div>
 <div id="listCon">
 	<!-- 이벤트별 상품 목록 -->
+	<!-- include 지시자 : 소스코드 자체를 포함한다. -->
 	<%@ include file ="shop/product/productCatalog.jsp"%>
 	
 </div>
