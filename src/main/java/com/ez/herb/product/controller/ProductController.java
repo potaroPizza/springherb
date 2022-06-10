@@ -49,7 +49,18 @@ public class ProductController {
 		return "/shop/product/productByCategory";
 	}
 	
-	
+	@RequestMapping("/productDetail")
+	public String detail(@RequestParam(defaultValue = "0") int productNo,
+			Model model) {
+		logger.info("상품 상세 페이지, 파라미터 productNo={)", productNo);
+		
+		ProductVO vo = productService.selectByProductNo(productNo);
+		logger.info("상품 상세 조회, vo={)", vo);
+		
+		model.addAttribute("vo", vo);
+		
+		return "/shop/product/productDetail";
+	}
 	
 	
 	

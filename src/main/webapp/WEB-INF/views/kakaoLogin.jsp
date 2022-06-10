@@ -17,10 +17,13 @@
     <a href="javascript:kakaoLogin();">
     	<img src="<c:url value='/images/kakao_login_medium_narrow.png'/>" alt="카카오계정 로그인" style="height: 100px;"/>
     </a>
-
+	<script type="text/javascript" 
+		src="<c:url value='/js/jquery-3.6.0.min.js'/>"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
         window.Kakao.init('8dcda3f46be3a86b7823ce582dc201aa');	// 인증요청
+        
+        alert("인증요청");
 
         function kakaoLogin() {
             window.Kakao.Auth.login({	// 토큰 요청
@@ -36,7 +39,12 @@
                             var email = kakao_account.email;
                             var name = res.properties.nickname;
                             
-                            window.location.href='/herb/kakao?email=email&name=name' //리다이렉트 되는 코드
+                            $('#frm input[name=email]').val(email);
+                            alert("이메일폼에담기"+ email);
+                            $('#frm input[name=name]').val(name);
+                            alert("닉네임폼에담기");
+                            alert("폼전송");
+                            $('form[name=frm]').submit();
                         }
                     });
                     //window.location.href='/herb/kakao' //리다이렉트 되는 코드
@@ -73,6 +81,12 @@
     		});
     	};
     </script>
+    
+    <form name="frm" method="post" id="frm"
+    	action="<c:url value='/kakaoLogin_ok'/>">
+    	<input type="text" name="email" id="email"/>
+    	<input type="text" name="name" id="name"/>
+    </form>
 
 </body>
 </html>

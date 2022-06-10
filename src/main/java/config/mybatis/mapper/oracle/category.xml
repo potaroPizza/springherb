@@ -4,6 +4,7 @@
 
 <mapper namespace="com.ez.herb.category.model.CategoryDAO">
 	<select id="selectAll" resultType="categoryVo">
-		select * from category
+		select * from category order by categoryOrder
+		<!-- order순서는 default값이랑 같은거라 빼도 상관없음 -->
 	</select>
 </mapper>

@@ -3,6 +3,7 @@ package com.ez.herb.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,10 +27,12 @@ public class IndexController {
 		return "/kakaoLogin";
 	}
 	
-	@RequestMapping("/kakao")
+	@PostMapping("/kakaoLogin_ok")
 	public String kakaoLogin_ok(@RequestParam String email,
 			@RequestParam String name) {
 		logger.info("카카오 로그인 처리 {}, {}", email, name);
+		
+		System.out.println(email + ", " + name);
 		
 		return "/index";
 	}

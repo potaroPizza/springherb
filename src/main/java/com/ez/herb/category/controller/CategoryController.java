@@ -29,6 +29,7 @@ public class CategoryController {
 		logger.info("카테고리리스트 페이지");
 		
 		List<CategoryVO> list = categoryService.selectAll();
+		logger.info("카테고리 조회 결과, list.size={}", list.size());
 		
 		model.addAttribute("list", list);
 		

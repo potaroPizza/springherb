@@ -28,6 +28,11 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> selectByCategory(int categoryNo) {
 		return productDao.selectByCategory(categoryNo);
 	}
+
+	@Override
+	public ProductVO selectByProductNo(int productNo) {
+		return productDao.selectByProductNo(productNo);
+	}
 	
 	
 }

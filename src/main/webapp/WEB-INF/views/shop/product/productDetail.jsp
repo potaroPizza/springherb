@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style type="text/css">	
 	#info, #desc{
@@ -64,7 +67,7 @@
 		<!-- 상품 이미지 -->
 		<p class="center">
 		<a >
-			<img src=""
+			<img src="<c:url value='/pd_images/${vo.imageURL}'/>"
 		 		border="0" width="150">
 		</a>	
 		</p>
@@ -77,20 +80,20 @@
 			<!-- 상품명 -->
 			<p class="line2">
 				<span class="boldF">
-					상품명 출력
+					${vo.productName}
 				</span>
 			</p>
-			<p class="line"><span class="sp1"><img src="../../images/dot2.JPG"> 판매가격</span>				
-				<span>가격 출력 </span>
+			<p class="line"><span class="sp1"><img src="<c:url value='/images/dot2.JPG'/>"> 판매가격</span>				
+				<span>${vo.sellPrice} 원</span>
 			</p>
-			<p class="line"><span class="sp1"><img src="../../images/dot2.JPG"> 적립금</span>
-				<span>적립금 출력</span>
+			<p class="line"><span class="sp1"><img src="<c:url value='/images/dot2.JPG'/>"> 적립금</span>
+				<span>${vo.mileage} 원</span>
 			</p>
-			<p class="line"><span class="sp1"><img src="../../images/dot2.JPG"> 제조사</span>
-				<span>제조사 출력</span>
+			<p class="line"><span class="sp1"><img src="<c:url value='/images/dot2.JPG'/>"> 제조사</span>
+				<span>${vo.company}</span>
 			</p>
 		
-			<p class="line"><span class="sp1"><img src="../../images/dot2.JPG"> 구매수량</span>
+			<p class="line"><span class="sp1"><img src="<c:url value='/images/dot2.JPG'/>"> 구매수량</span>
 				<label for="qty"><input type="text" name="qty" id="qty" value="1" ></label>
 			</p>
 			<p class="center">
@@ -101,12 +104,12 @@
 	</div>
 </div>
 <div id="desc">
-	<img src="../../images/dot6.JPG">
+	<img src="<c:url value='/images/dot6.JPG'/>">
 	<span style="font-size:12pt;font-weight:bold">
 		상품상세정보</span>
 	<br><br>
-	<p>Explain</p>
-	<p>Description</p>	
+	<p>${vo.explains}</p>
+	<p>${vo.description}</p>	
 </div>
 
 
