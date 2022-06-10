@@ -13,5 +13,10 @@
 		select * from products
 		where categoryno = #{categoryNo}
 	</select>
+	
+	<select id="selectByProductNo" parameterType="int" resultType="productVo">
+		select * from products
+		where productNo = #{productNo}
+	</select>
 
 </mapper>
