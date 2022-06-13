@@ -40,10 +40,10 @@
                             var name = res.properties.nickname;
                             
                             $('#frm input[name=email]').val(email);
-                            alert("이메일폼에담기"+ email);
+                            //alert("이메일폼에담기"+ email);
                             $('#frm input[name=name]').val(name);
-                            alert("닉네임폼에담기");
-                            alert("폼전송");
+                            //alert("닉네임폼에담기");
+                            //alert("폼전송");
                             $('form[name=frm]').submit();
                         }
                     });
