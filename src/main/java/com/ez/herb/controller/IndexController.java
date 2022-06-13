@@ -145,7 +145,14 @@ public class IndexController {
 	
 	
 	
-	
+	@PostMapping("/게시판어쩌구")
+	public String board(@RequestParam String userCode,
+			@RequestParam String boardCategory) {
+		
+		
+		
+		return "/index";
+	}
 	
 	
 	
